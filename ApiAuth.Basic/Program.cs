@@ -1,3 +1,4 @@
+using ApiAuth.Basic.Filters;
 using ApiAuth.Basic.Middleware;
 using ApiAuth.Basic.Services;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IBasicAuthValidation, BasicAuthValidation>();
+builder.Services.AddScoped<BasicAuthFilter>();
 
 var app = builder.Build();
 
@@ -21,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<BasicAuthMiddleware>();
+//app.UseMiddleware<BasicAuthMiddleware>();
 
 app.UseHttpsRedirection();
 

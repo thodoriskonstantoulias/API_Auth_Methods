@@ -1,3 +1,4 @@
+using ApiAuth.Basic.Attributes;
 using ApiAuth.Basic.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,6 +6,7 @@ namespace ApiAuth.Basic.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
+    [BasicAuth]
     public class PeopleController : ControllerBase
     {
         // test here - real world from db
