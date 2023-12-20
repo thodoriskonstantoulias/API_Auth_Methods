@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiAuth.ApiKey.Filters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAuth.ApiKey.Attributes
 {

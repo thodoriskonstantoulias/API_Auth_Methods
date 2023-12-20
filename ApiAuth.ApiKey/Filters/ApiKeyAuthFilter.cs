@@ -7,7 +7,7 @@ using ApiAuth.ApiKey.Models;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
-namespace ApiAuth.ApiKey.Attributes
+namespace ApiAuth.ApiKey.Filters
 {
     public class ApiKeyAuthFilter : IAsyncAuthorizationFilter
     {
@@ -28,7 +28,7 @@ namespace ApiAuth.ApiKey.Attributes
 
             // 1
             // userApiKey = context.HttpContext.Request.Query["apikey"].ToString();
-           
+
             // 2
             //var body = context.HttpContext.Request.Body;
             //using (var reader = new StreamReader(body))

@@ -1,4 +1,4 @@
-using ApiAuth.ApiKey.Attributes;
+using ApiAuth.ApiKey.Filters;
 using ApiAuth.ApiKey.Middleware;
 using ApiAuth.ApiKey.Services;
 
@@ -29,6 +29,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+//app.MapGet("api/test", () =>
+//{
+//    return Results.Ok(new { success = true });
+//}).AddEndpointFilter<ApiKeyEndpointFilter>(); 
 
 app.MapControllers();
 
