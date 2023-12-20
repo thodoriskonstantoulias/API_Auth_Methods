@@ -9,7 +9,7 @@ This is a repo containing multiple .NET8 WEB API projects covering all the basic
 
    ###### Api key is passed through query string, body, header   
 
-### 1) With Basic Auth
+### 2) With Basic Auth
    - From auth filtering using basic auth attribute
    - From middleware
    - From adding authentication scheme with authorize attribute
