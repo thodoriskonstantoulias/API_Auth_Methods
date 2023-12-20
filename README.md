@@ -2,8 +2,9 @@
 
 This is a repo containing multiple .NET8 WEB API projects covering all the basic API Authentication methods
 
-1) With API KEY 
+### 1) With API KEY 
    - From auth filtering using api key attribute
    - From middleware
+   - Endpoint filtering
 
-   Api key is passed through query string, body, header   
+   ###### Api key is passed through query string, body, header   
