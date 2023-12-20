@@ -1,4 +1,5 @@
 using ApiAuth.ApiKey.Attributes;
+using ApiAuth.ApiKey.Middleware;
 using ApiAuth.ApiKey.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// api key using middware
+//app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseHttpsRedirection();
 
