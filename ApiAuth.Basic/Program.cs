@@ -1,4 +1,5 @@
 using ApiAuth.Basic.Filters;
+using ApiAuth.Basic.Handlers;
 using ApiAuth.Basic.Middleware;
 using ApiAuth.Basic.Services;
 
@@ -7,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddAuthentication("Basic")
+    .AddScheme<BasicAuthenticationOptions, BasicAuthenticationHandler>("Basic", null);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

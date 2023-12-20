@@ -11,9 +11,9 @@ namespace ApiAuth.Basic.Services
             this.configuration = configuration;
         }
 
-        public bool IsValidBasicCreds(string? apiKey)
+        public bool IsValidBasicCreds(string? basicAuthKey)
         {
-            if (string.IsNullOrWhiteSpace(apiKey))
+            if (string.IsNullOrWhiteSpace(basicAuthKey))
             {
                 return false;
             }
@@ -21,7 +21,7 @@ namespace ApiAuth.Basic.Services
             var user = this.configuration.GetValue<string>("Basic:Username");
             var pass = this.configuration.GetValue<string>("Basic:Password");
 
-            byte[] authHeaderValue = Convert.FromBase64String(apiKey.Split(" ")[1]);
+            byte[] authHeaderValue = Convert.FromBase64String(basicAuthKey.Split(" ")[1]);
             string decodedString = System.Text.Encoding.UTF8.GetString(authHeaderValue);
             var arr = decodedString.Split(':');
 

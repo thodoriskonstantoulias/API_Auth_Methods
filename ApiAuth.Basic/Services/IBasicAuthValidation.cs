@@ -2,6 +2,6 @@
 {
     public interface IBasicAuthValidation
     {
-        bool IsValidBasicCreds(string? apiKey);
+        bool IsValidBasicCreds(string? basicAuthKey);
     }
 }
