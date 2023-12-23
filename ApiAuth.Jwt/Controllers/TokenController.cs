@@ -10,27 +10,38 @@ namespace ApiAuth.Jwt.Controllers
     public class TokenController : ControllerBase
     {
         private readonly ITokenService tokenService;
-        private readonly IUserValidator userValidator;
+        private readonly IAccountService accountService;
 
-        public TokenController(ITokenService tokenService, IUserValidator userValidator)
+        public TokenController(ITokenService tokenService, IAccountService accountService)
         {
             this.tokenService = tokenService;
-            this.userValidator = userValidator;
+            this.accountService = accountService;
         }
 
         [HttpGet]
-        public IActionResult Connect([FromQuery] UserRequest userRequest)
+        public async Task<IActionResult> Connect([FromQuery] UserRequest userRequest)
         {
-            if (!this.userValidator.IsUserValidFromSettings(userRequest))
+            var loginModel = await this.accountService.LoginUserFromSettings(userRequest);
+            if (!loginModel.Success)
             {
-                return BadRequest("Username or password is incorrect");
+                return BadRequest(loginModel);
             }
 
             var model = this.tokenService.GenerateToken(userRequest);
-            if (!model.Success)
+
+            return Ok(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConnectWithIdentity([FromQuery] UserRequest userRequest)
+        {
+            var loginModel = await this.accountService.LoginUserAsync(userRequest);
+            if (!loginModel.Success)
             {
-                return Unauthorized(model);
+                return BadRequest(loginModel);
             }
+
+            var model = this.tokenService.GenerateToken(userRequest);
 
             return Ok(model);
         }

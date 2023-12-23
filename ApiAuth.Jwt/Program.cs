@@ -74,7 +74,7 @@ builder.Services.AddAuthorization();
 
 
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IUserValidator, UserValidator>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
