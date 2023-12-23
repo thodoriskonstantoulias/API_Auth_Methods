@@ -17,18 +17,7 @@ namespace ApiAuth.Jwt.Services
         }
 
         public TokenModel GenerateToken(UserRequest userRequest)
-        {
-            var validUsername = this.configuration.GetValue<string>("Jwt:TestUsername");
-            var validPassword = this.configuration.GetValue<string>("Jwt:TestPassword");
-            if (validUsername != userRequest.Username || validPassword != userRequest.Password)
-            {
-                return new TokenModel
-                {
-                    Success = false,
-                    ErrorMessage = "Username or password is incorrect"
-                };
-            }
-
+        {           
             var issuer = this.configuration.GetValue<string>("Jwt:Issuer");
             var audience = this.configuration.GetValue<string>("Jwt:Audience");
             var key = Encoding.ASCII.GetBytes(this.configuration.GetValue<string>("Jwt:Key")!);
