@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ApiAuth.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiAuth.Data
@@ -9,5 +10,7 @@ namespace ApiAuth.Data
            : base(options)
         {
         }
+
+        public DbSet<UserRefreshToken> RefreshTokens { get; set; }
     }
 }

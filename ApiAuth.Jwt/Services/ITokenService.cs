@@ -4,6 +4,8 @@ namespace ApiAuth.Jwt.Services
 {
     public interface ITokenService
     {
-        TokenModel GenerateToken(UserRequest userRequest); 
+        TokenModel GenerateToken(UserRequest userRequest);
+
+        string GenerateRefreshToken();
     }
 }

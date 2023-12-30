@@ -9,5 +9,7 @@ namespace ApiAuth.Jwt.Services
         Task<ResponseModel> LoginUserFromSettings(UserRequest userRequest);
 
         Task<ResponseModel> LoginUserAsync(UserRequest userRequest);
+
+        Task AddUserRefreshTokenAsync(string token);
     }
 }

@@ -1,4 +1,5 @@
-﻿using ApiAuth.Jwt.Models;
+﻿using ApiAuth.Data;
+using ApiAuth.Jwt.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace ApiAuth.Jwt.Services
@@ -7,11 +8,25 @@ namespace ApiAuth.Jwt.Services
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly IConfiguration configuration;
+        private readonly AppDbContext dbContext;
 
-        public AccountService(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public AccountService(UserManager<IdentityUser> userManager,
+            IConfiguration configuration,
+            AppDbContext dbContext)
         {
             this.userManager = userManager;
             this.configuration = configuration;
+            this.dbContext = dbContext;
+        }
+
+        public async Task AddUserRefreshTokenAsync(string token)
+        {
+            await this.dbContext.RefreshTokens.AddAsync(new Data.Models.UserRefreshToken
+            {
+                RefreshToken = token,
+                ExpiredDate = DateTime.UtcNow.AddDays(7)
+            });
+            await this.dbContext.SaveChangesAsync();
         }
 
         public async Task<ResponseModel> LoginUserAsync(UserRequest userRequest)

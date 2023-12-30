@@ -42,6 +42,7 @@ namespace ApiAuth.Jwt.Controllers
             }
 
             var model = this.tokenService.GenerateToken(userRequest);
+            await this.accountService.AddUserRefreshTokenAsync(model.RefreshToken!);
 
             return Ok(model);
         }
