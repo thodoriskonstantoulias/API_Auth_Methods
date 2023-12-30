@@ -2,7 +2,7 @@
 
 This is a repo containing multiple .NET8 WEB API projects covering all the basic API Authentication methods
 
-### 1) With API KEY 
+### 1) With Api key 
    - From auth filtering using api key attribute
    - From middleware
    - Endpoint filtering
@@ -13,3 +13,7 @@ This is a repo containing multiple .NET8 WEB API projects covering all the basic
    - From auth filtering using basic auth attribute
    - From middleware
    - From adding authentication scheme with authorize attribute
+
+### 3) With JWT
+   - Simple from configuration credentials (only login)
+   - With identity provider (register and login)
