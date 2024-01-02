@@ -1,4 +1,5 @@
-﻿using ApiAuth.Jwt.Models;
+﻿using ApiAuth.Data.Models;
+using ApiAuth.Jwt.Models;
 
 namespace ApiAuth.Jwt.Services
 {
@@ -10,6 +11,10 @@ namespace ApiAuth.Jwt.Services
 
         Task<ResponseModel> LoginUserAsync(UserRequest userRequest);
 
-        Task AddUserRefreshTokenAsync(string token);
+        Task AddUserRefreshTokenAsync(string token, string? username);
+
+        Task<UserRefreshToken?> GetRefreshTokenAsync(string token, string? username);
+
+        Task<List<UserRefreshToken>> GetUserActiveRefreshTokensAsync(string? username);
     }
 }

@@ -12,9 +12,14 @@ namespace ApiAuth.Data.Models
         public int ID { get; set; }
 
         [Required]
+        public string? Username { get; set; }
+
+        [Required]
         public string? RefreshToken { get; set; }
 
         public bool IsActive { get; set; } = true;
+
+        public bool Revoked { get; set; }
 
         [Required]
         public DateTime? ExpiredDate { get; set; }

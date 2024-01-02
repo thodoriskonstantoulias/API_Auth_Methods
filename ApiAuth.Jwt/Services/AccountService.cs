@@ -1,6 +1,8 @@
 ﻿using ApiAuth.Data;
+using ApiAuth.Data.Models;
 using ApiAuth.Jwt.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiAuth.Jwt.Services
 {
@@ -19,14 +21,31 @@ namespace ApiAuth.Jwt.Services
             this.dbContext = dbContext;
         }
 
-        public async Task AddUserRefreshTokenAsync(string token)
+        public async Task AddUserRefreshTokenAsync(string token, string? username)
         {
+            var userTokens = await this.GetUserActiveRefreshTokensAsync(username);
+            if (userTokens.Any())
+            {
+                userTokens.ForEach(x => x.IsActive = false);
+            }
+
             await this.dbContext.RefreshTokens.AddAsync(new Data.Models.UserRefreshToken
             {
                 RefreshToken = token,
+                Username = username,
                 ExpiredDate = DateTime.UtcNow.AddDays(7)
             });
             await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<UserRefreshToken?> GetRefreshTokenAsync(string token, string? username)
+        {
+            return await this.dbContext.RefreshTokens.FirstOrDefaultAsync(x => x.Username == username && x.RefreshToken == token);
+        }
+
+        public async Task<List<UserRefreshToken>> GetUserActiveRefreshTokensAsync(string? username)
+        {
+            return await this.dbContext.RefreshTokens.Where(x => x.Username == username && x.IsActive).ToListAsync();
         }
 
         public async Task<ResponseModel> LoginUserAsync(UserRequest userRequest)

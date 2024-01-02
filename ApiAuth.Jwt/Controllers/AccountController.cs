@@ -29,7 +29,7 @@ namespace ApiAuth.Jwt.Controllers
                 return BadRequest(response.ErrorMessage);
             }
 
-            var model = this.tokenService.GenerateToken(userRequest);
+            var model = this.tokenService.GenerateToken(userRequest.Username!);
             return Ok(model);
         }
     }
