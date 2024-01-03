@@ -16,5 +16,7 @@ namespace ApiAuth.Jwt.Services
         Task<UserRefreshToken?> GetRefreshTokenAsync(string token, string? username);
 
         Task<List<UserRefreshToken>> GetUserActiveRefreshTokensAsync(string? username);
+
+        Task RevokeRefreshTokenAsync(string token, string? username);
     }
 }

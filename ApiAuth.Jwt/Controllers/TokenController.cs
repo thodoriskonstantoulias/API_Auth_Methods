@@ -85,5 +85,31 @@ namespace ApiAuth.Jwt.Controllers
 
             return Ok(model);
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> RevokeRefreshToken([FromBody] string refreshToken)
+        {
+            var username = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+            var dbRefreshToken = await this.accountService.GetRefreshTokenAsync(refreshToken!, username);
+            if (dbRefreshToken == null)
+            {
+                return BadRequest("Refresh token does not exist");
+            }
+
+            if (!dbRefreshToken.IsActive)
+            {
+                return BadRequest("Refresh token is not active");
+            }
+
+            if (dbRefreshToken.Revoked)
+            {
+                return BadRequest("Refresh token is already revoked");
+            }
+
+            await this.accountService.RevokeRefreshTokenAsync(refreshToken!, username);
+
+            return NoContent();
+        }
     }
 }

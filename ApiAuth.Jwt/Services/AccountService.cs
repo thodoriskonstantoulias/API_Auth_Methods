@@ -48,6 +48,14 @@ namespace ApiAuth.Jwt.Services
             return await this.dbContext.RefreshTokens.Where(x => x.Username == username && x.IsActive).ToListAsync();
         }
 
+        public async Task RevokeRefreshTokenAsync(string token, string? username)
+        {
+            var dbToken =  await this.dbContext.RefreshTokens.FirstOrDefaultAsync(x => x.Username == username && x.RefreshToken == token);
+
+            dbToken!.Revoked = true;
+            await this.dbContext.SaveChangesAsync();
+        }
+
         public async Task<ResponseModel> LoginUserAsync(UserRequest userRequest)
         {
             var user = await this.userManager.FindByEmailAsync(userRequest.Username!);
