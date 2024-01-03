@@ -17,3 +17,4 @@ This is a repo containing multiple .NET8 WEB API projects covering all the basic
 ### 3) With JWT
    - Simple from configuration credentials (only login)
    - With identity provider (register and login)
+   - Refresh token endpoints (with revoke also)
