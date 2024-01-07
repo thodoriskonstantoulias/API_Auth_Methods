@@ -19,5 +19,5 @@ This is a repo containing multiple .NET8 WEB API projects covering all the basic
    - With identity provider (register and login)
    - Refresh token endpoints (with revoke also)
 
-### 3) With OAuth
+### 4) With OAuth
    - Simple web project with Google Authentication (sample)
