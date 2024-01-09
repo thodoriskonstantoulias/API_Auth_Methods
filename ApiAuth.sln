@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAuth.Data", "ApiAuth.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OAuth.External.Web", "OAuth.External.Web\OAuth.External.Web.csproj", "{AF85E8F3-2A30-4A99-8E12-4E23B484C39D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.Server", "OAuth.Server\OAuth.Server.csproj", "{32432C6F-0A0D-429B-B2E6-F0AD2097A9DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OAuth.Server.Web", "OAuth.Server.Web\OAuth.Server.Web.csproj", "{801E11B4-99BC-4DFD-85F5-0A3C1626291A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{AF85E8F3-2A30-4A99-8E12-4E23B484C39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF85E8F3-2A30-4A99-8E12-4E23B484C39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF85E8F3-2A30-4A99-8E12-4E23B484C39D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32432C6F-0A0D-429B-B2E6-F0AD2097A9DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32432C6F-0A0D-429B-B2E6-F0AD2097A9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32432C6F-0A0D-429B-B2E6-F0AD2097A9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32432C6F-0A0D-429B-B2E6-F0AD2097A9DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801E11B4-99BC-4DFD-85F5-0A3C1626291A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801E11B4-99BC-4DFD-85F5-0A3C1626291A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801E11B4-99BC-4DFD-85F5-0A3C1626291A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801E11B4-99BC-4DFD-85F5-0A3C1626291A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
