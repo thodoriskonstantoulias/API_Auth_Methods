@@ -2,6 +2,7 @@ using ApiAuth.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using OAuth.Server.Web.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseOpenIddict();
 });
 
+builder.Services.AddHostedService<SeedData>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
@@ -47,7 +49,8 @@ builder.Services.AddOpenIddict()
             // Encryption and signing of tokens
             options
                 .AddEphemeralEncryptionKey()
-                .AddEphemeralSigningKey();
+                .AddEphemeralSigningKey()
+                .DisableAccessTokenEncryption();
 
             // Register scopes (permissions)
             options.RegisterScopes("api");

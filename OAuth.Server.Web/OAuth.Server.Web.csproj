@@ -14,5 +14,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiAuth.Data\ApiAuth.Data.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   
 </Project>
