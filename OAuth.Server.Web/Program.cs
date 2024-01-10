@@ -23,9 +23,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddHostedService<SeedData>();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//    .AddEntityFrameworkStores<AppDbContext>()
+//    .AddDefaultTokenProviders();
 
 builder.Services.AddOpenIddict()
 
@@ -47,7 +47,8 @@ builder.Services.AddOpenIddict()
 
             options
                 .SetAuthorizationEndpointUris("/connect/authorize")
-                .SetTokenEndpointUris("/connect/token");
+                .SetTokenEndpointUris("/connect/token")
+                .SetUserinfoEndpointUris("/connect/userinfo");
 
             // Encryption and signing of tokens
             options
@@ -62,7 +63,8 @@ builder.Services.AddOpenIddict()
             options
                 .UseAspNetCore()
                 .EnableAuthorizationEndpointPassthrough()
-                .EnableTokenEndpointPassthrough();
+                .EnableTokenEndpointPassthrough()
+                .EnableUserinfoEndpointPassthrough();
         });
 var app = builder.Build();
 
