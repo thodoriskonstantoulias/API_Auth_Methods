@@ -41,9 +41,12 @@ builder.Services.AddOpenIddict()
         .AddServer(options =>
         {
             options
+                .AllowAuthorizationCodeFlow()
+                .RequireProofKeyForCodeExchange()
                 .AllowClientCredentialsFlow();
 
             options
+                .SetAuthorizationEndpointUris("/connect/authorize")
                 .SetTokenEndpointUris("/connect/token");
 
             // Encryption and signing of tokens
@@ -58,6 +61,7 @@ builder.Services.AddOpenIddict()
             // Register the ASP.NET Core host and configure the ASP.NET Core-specific options.
             options
                 .UseAspNetCore()
+                .EnableAuthorizationEndpointPassthrough()
                 .EnableTokenEndpointPassthrough();
         });
 var app = builder.Build();
