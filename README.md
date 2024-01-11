@@ -27,4 +27,4 @@ This is a repo containing multiple .NET8 WEB API projects covering all the basic
       - Authorization code flow
       - User info endpoint
       - Refresh token flow
-   ###### Everything can be tested with Postman as also as combining cookie client authentication with Idenity authorization server using OAuth2.0
+   ###### OAuth2.0 implementation can be tested with Postman as also as combining cookie client authentication with Idenity authorization server
