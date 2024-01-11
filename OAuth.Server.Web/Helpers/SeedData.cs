@@ -33,7 +33,7 @@ namespace OAuth.Server.Web.Helpers
                     RedirectUris = { new Uri("https://oauth.pstmn.io/v1/callback") },
                     Permissions =
                     {
-                         OpenIddictConstants.Permissions.Endpoints.Authorization,
+                        OpenIddictConstants.Permissions.Endpoints.Authorization,
                         OpenIddictConstants.Permissions.Endpoints.Token,
 
                         OpenIddictConstants.Permissions.GrantTypes.AuthorizationCode,
