@@ -24,7 +24,7 @@ This is a repo containing multiple .NET8 WEB API projects covering all the basic
    - Web project implementing OAuth2.0 and OpenIdConnect with OpenIddict library
       - Login form in UI
       - Client credentials flow
-      - Authorization Code flow
+      - Authorization code flow
       - User info endpoint
       - Refresh token flow
-   Everything can be tested with Postman as also as combining cookie client authentication with Idenity authorization server using OAuth2.0
+   ###### Everything can be tested with Postman as also as combining cookie client authentication with Idenity authorization server using OAuth2.0
